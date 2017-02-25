@@ -4,8 +4,9 @@ Please go through the following before running the code.
 REQUIRED MODULES :
 numpy
 csv
-dstML.data_fn
-dstML.output_fn
+dstML 
+tqdm 
+heapq
 scipy
 pickle
 sklearn
