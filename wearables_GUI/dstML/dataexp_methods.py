@@ -1,6 +1,6 @@
 import numpy as np
-from tqdm import tqdm
-import heapq
+#from tqdm import tqdm
+#import heapq
 
 def nearest_neighbor(feat,data,factor):
 	n = len(data)
@@ -8,7 +8,8 @@ def nearest_neighbor(feat,data,factor):
 	dist = np.zeros((n))
 	for i in range(n):
 		dist[i] = np.linalg.norm(feat-data[i].astype(float))
-	loc = heapq.nlargest(factor,range(int(n)),dist.take)
+	loc = np.flipud(np.argsort(dist))[:factor]
+	#loc = heapq.nlargest(factor,range(int(n)),dist.take)
 	data_nn = []
 	for i in range(factor):
 		data_nn.append(data[loc[i]])
@@ -19,7 +20,7 @@ def smote(data,factor):
 	(m,n) = data.shape
 	data_exp = np.zeros((m*factor,n))
 	count=0
-	for i in tqdm(range(m)):
+	for i in range(m):
 		feat = data[i,:]
 		feat_nn = nearest_neighbor(feat,data,factor)
 		for j in range(factor):
@@ -34,7 +35,7 @@ def oversample(data,factor):
 	(m,n) = data.shape
 	data_exp = np.zeros((m*factor,n))
 	count=0
-	for i in tqdm(range(m)):
+	for i in range(m):
 		feat = data[i,:]
 		for j in range(factor):
 			new_feat = feat
