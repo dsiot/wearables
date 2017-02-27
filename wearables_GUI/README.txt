@@ -5,8 +5,6 @@ REQUIRED MODULES :
 numpy
 csv
 dstML 
-tqdm 
-heapq
 scipy
 pickle
 sklearn
