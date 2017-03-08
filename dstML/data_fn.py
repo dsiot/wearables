@@ -1,6 +1,6 @@
 # inbuilt modules
 import numpy as np
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 # defined modules
 from dataexp_methods import *
 
